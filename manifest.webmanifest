@@ -1,0 +1,33 @@
+{
+  "name": "EStyle Color ID",
+  "short_name": "EStyle",
+  "description": "Digitale Farbtypanalyse per Foto für ESKYNA Kundinnen und Kunden.",
+  "start_url": "/app/#welcome",
+  "scope": "/app/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f2ee",
+  "theme_color": "#f6f2ee",
+  "categories": ["lifestyle", "shopping", "beauty"],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/app/"
+}

@@ -1,0 +1,32 @@
+name: Bug Report
+about: Fehler in der Farbkarte melden
+title: '[Bug] '
+labels: ['bug']
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Beschreibung
+      description: Was ist passiert?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Schritte zum Reproduzieren
+      placeholder: |
+        1. Oeffne ...
+        2. Tippe auf ...
+        3. Erwartet ...
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Geraet / Browser
+      placeholder: Android Chrome, iPhone Safari, Desktop Chrome ...
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots oder Zusatzinfos
+

@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate static PWA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          set -euo pipefail
+          required=(
+            index.html
+            app.js
+            styles.css
+            sw.js
+            manifest.webmanifest
+            config.example.js
+            assets/icon-192.png
+            assets/icon-512.png
+          )
+          for file in "${required[@]}"; do
+            test -f "$file" || { echo "Missing required file: $file"; exit 1; }
+          done
+
+      - name: Validate manifest
+        run: python3 -c "import json; json.load(open('manifest.webmanifest'))"
+
+      - name: Verify /app base path
+        run: |
+          set -euo pipefail
+          grep -q '"/app/' manifest.webmanifest
+          grep -q 'appBasePath: "/app/"' config.example.js
+          grep -q 'href="/app/manifest.webmanifest"' index.html
+
+      - name: Upload static artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: eskyna-app-static
+          path: |
+            index.html
+            app.js
+            styles.css
+            sw.js
+            manifest.webmanifest
+            sample-api-response.json
+            config.example.js
+            assets
+          if-no-files-found: error

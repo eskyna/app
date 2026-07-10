@@ -1,0 +1,83 @@
+{
+  "colorType": "SANFT- KALT",
+  "baseColors": [
+    {
+      "name": "Navy",
+      "hex": "#00203d"
+    },
+    {
+      "name": "Mauve Brown",
+      "hex": "#645055"
+    },
+    {
+      "name": "Slate",
+      "hex": "#6d7a86"
+    },
+    {
+      "name": "Cool Grey",
+      "hex": "#7d878a"
+    },
+    {
+      "name": "Soft Lilac Grey",
+      "hex": "#a99aa8"
+    },
+    {
+      "name": "Mist",
+      "hex": "#aebbc1"
+    }
+  ],
+  "accentColors": [
+    {
+      "name": "Blue",
+      "hex": "#2e5fa8"
+    },
+    {
+      "name": "Periwinkle",
+      "hex": "#7ea0d8"
+    },
+    {
+      "name": "Petrol",
+      "hex": "#1d7769"
+    },
+    {
+      "name": "Berry",
+      "hex": "#a14276"
+    },
+    {
+      "name": "Raspberry",
+      "hex": "#dd3158"
+    },
+    {
+      "name": "Rose",
+      "hex": "#ed839e"
+    }
+  ],
+  "noGoColors": [
+    {
+      "name": "Tomate",
+      "hex": "#dc4744"
+    },
+    {
+      "name": "Orange",
+      "hex": "#f57100"
+    },
+    {
+      "name": "Eigelb",
+      "hex": "#ffbc0a"
+    },
+    {
+      "name": "Senf",
+      "hex": "#a58408"
+    }
+  ],
+  "noGoText": "Eigelb, Tomate, Orange, Senf - sie lassen dein Teint müde und gelblich wirken.",
+  "photoCount": 2,
+  "detection": {
+    "faceDetected": true,
+    "faceCount": 1,
+    "confidence": 0.94,
+    "quality": "gut",
+    "lighting": "gleichmaessig",
+    "backgroundNeutral": true
+  }
+}

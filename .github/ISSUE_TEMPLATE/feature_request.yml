@@ -1,0 +1,25 @@
+name: Feature Request
+about: Verbesserung oder neue Funktion vorschlagen
+title: '[Feature] '
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Ausgangssituation
+      description: Welches Problem soll geloest werden?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Wunschloesung
+      description: Wie soll es sich fuer Kundinnen anfuehlen?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Kontext
+      description: Links, Screenshots, Beispiele oder betroffene Paletten
+

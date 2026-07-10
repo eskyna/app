@@ -1,0 +1,34 @@
+name: Send EStyle Patchnotes
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: Push title
+        required: true
+        default: EStyle Update
+      body:
+        description: Push message
+        required: true
+        default: Neue Verbesserungen in deiner EStyle App sind verfuegbar.
+      url:
+        description: URL to open
+        required: true
+        default: https://eskyna.com/app/#welcome
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install firebase-admin
+      - run: node server-examples/send-patchnote-firestore.mjs
+        env:
+          FIREBASE_PROJECT_ID: eskyna-style
+          FIREBASE_SERVICE_ACCOUNT_BASE64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }}
+          PATCH_TITLE: ${{ github.event.inputs.title }}
+          PATCH_BODY: ${{ github.event.inputs.body }}
+          PATCH_URL: ${{ github.event.inputs.url }}
