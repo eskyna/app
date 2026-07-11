@@ -52,13 +52,13 @@
       // Firebase Web App Konfiguration.
       // In Firebase Authentication vorerst nur Google aktivieren; Email/Password deaktiviert lassen.
       firebaseConfig: {
-        apiKey: "AIzaSyBLnOeqtIgBUObt5S4G9vImavaeS0lua1E",
-        authDomain: "eskyna-style.firebaseapp.com",
-        projectId: "eskyna-style",
-        storageBucket: "eskyna-style.firebasestorage.app",
-        messagingSenderId: "349179931593",
-        appId: "1:349179931593:web:332b9c02eaee3e8e525618",
-        measurementId: "G-ERP45XHEG9",
+        apiKey: "",
+        authDomain: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: "",
+        measurementId: "",
       },
     },
   };
