@@ -33,22 +33,40 @@ jobs:
             sw.js
             manifest.webmanifest
             config.example.js
+            scripts/write-config.mjs
           )
           for file in "${required[@]}"; do
             test -f "$file" || { echo "Missing required file: $file"; exit 1; }
           done
 
+      - name: Generate config.js from Firebase secrets
+        env:
+          FIREBASE_WEB_CONFIG: ${{ secrets.FIREBASE_WEB_CONFIG }}
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
+          FIREBASE_FCM_VAPID_KEY: ${{ secrets.FIREBASE_FCM_VAPID_KEY }}
+          FIREBASE_WEB_PUSH_VAPID_KEY: ${{ secrets.FIREBASE_WEB_PUSH_VAPID_KEY }}
+          FIREBASE_SERVICE_ACCOUNT_BASE64: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }}
+        run: |
+          set -euo pipefail
+          if node scripts/write-config.mjs; then
+            echo "config.js aus GitHub Secrets erzeugt."
+          else
+            echo "Keine Firebase-Secrets gesetzt, nutze config.example.js als Fallback."
+            cp config.example.js config.js
+          fi
+
       - name: Prepare site
         run: |
           set -euo pipefail
           mkdir -p _site
-          cp index.html app.js styles.css sw.js manifest.webmanifest sample-api-response.json _site/
+          cp index.html app.js styles.css sw.js manifest.webmanifest sample-api-response.json config.js _site/
           cp -r assets _site/
-          if [ -f config.js ]; then
-            cp config.js _site/
-          else
-            cp config.example.js _site/config.js
-          fi
           touch _site/.nojekyll
 
       - name: Upload Pages artifact

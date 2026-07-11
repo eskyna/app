@@ -32,6 +32,26 @@ Wenn die PWA spaeter in einen anderen Ordner umzieht, muessen `appBasePath` in `
 
 Der Workflow `.github/workflows/pages.yml` veroeffentlicht dieselben statischen Dateien unter `https://eskyna.github.io/app/`. Fuer die Produktion auf `eskyna.com` die Dateien weiterhin in den Server-Ordner `/app` hochladen.
 
+#### GitHub Secrets fuer Firebase
+
+`FIREBASE_SERVICE_ACCOUNT_BASE64` wird fuer serverseitige Patchnotes genutzt und kann zusaetzlich `projectId`, `authDomain` und `storageBucket` fuer den Deploy ableiten.
+
+Fuer Login und Push in der PWA brauchst du mindestens:
+
+- `FIREBASE_API_KEY`
+- `FIREBASE_APP_ID`
+- `FIREBASE_MESSAGING_SENDER_ID`
+- `FIREBASE_MEASUREMENT_ID` (optional)
+- `FIREBASE_WEB_PUSH_VAPID_KEY` (optional, oeffentlicher Web-Push-Key)
+
+Optional, falls nicht aus dem Service Account ableitbar:
+
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_AUTH_DOMAIN`
+- `FIREBASE_STORAGE_BUCKET`
+
+Alternativ reicht auch ein einzelnes JSON-Secret `FIREBASE_WEB_CONFIG`.
+
 ## Aktuelle `config.js`
 
 ```js
